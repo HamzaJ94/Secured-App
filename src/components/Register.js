@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate, Link } from 'react-router-dom';
 import { auth } from '../firebase';
 import * as yup from 'yup';
 
@@ -13,6 +14,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -39,6 +41,9 @@ const Register = () => {
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
         <button type="submit">Register</button>
+        <p>
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
       </form>
     </div>
   );
