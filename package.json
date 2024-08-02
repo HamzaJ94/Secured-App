@@ -20,6 +20,7 @@
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.26.0",
     "react-scripts": "5.0.1",
+    "vercel": "^35.2.2",
     "web-vitals": "^2.1.4",
     "yup": "^1.4.0"
   },
