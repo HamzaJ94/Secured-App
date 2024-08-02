@@ -1,5 +1,6 @@
 import React from 'react';
 import './Home.css'; // Importing the CSS file for styling
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -8,8 +9,7 @@ const Home = () => {
         <h1>Welcome to React Secured App</h1>
         <nav>
           <ul>
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/login">Login</a></li>
+            <li><Link to="/profile">Profile</Link></li>
             <li><a href="/register">Register</a></li>
           </ul>
         </nav>

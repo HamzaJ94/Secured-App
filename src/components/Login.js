@@ -1,4 +1,3 @@
-// src/components/Login.js
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
@@ -8,22 +7,24 @@ import './Login.css'; // Import the CSS file
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      // navigate to home page
       navigate('/');
     } catch (error) {
-      console.error('Login failed:', error);
+      setError('Login failed', error);
     }
   };
 
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2>Login</h2>
+        {error && <p>{error}</p>}
         <form onSubmit={handleLogin}>
           <div className="input-group">
             <label htmlFor="email">Email</label>

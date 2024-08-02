@@ -22,8 +22,9 @@ const Register = () => {
       await passwordSchema.validate(password);
       await createUserWithEmailAndPassword(auth, email, password);
       // navigate to home page
-    } catch (err) {
-      setError(err.message);
+      navigate('/');
+    } catch (error) {
+      setError(error.message);
     }
   };
 

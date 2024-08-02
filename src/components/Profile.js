@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import './Profile.css'; // Importing the CSS file for styling
-
-// Example of navigation links in Profile.js
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -13,9 +12,7 @@ const Profile = () => {
         <h1>Profile Page</h1>
         <nav>
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
+          <li><Link to="/">Home</Link></li>
           </ul>
         </nav>
       </header>
