@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
 import { auth } from '../firebase';
 import * as yup from 'yup';
+import './Register.css'; // Import the CSS file
 
 const passwordSchema = yup.string().min(8, 'Password must be at least 8 characters')
   .matches(/[A-Z]/, 'Password must contain an uppercase letter')
@@ -29,23 +30,25 @@ const Register = () => {
   };
 
   return (
-    <div className="register">
+    <div className="register-container">
+    <div className="register-box">
       <h2>Register</h2>
       {error && <p>{error}</p>}
       <form onSubmit={handleRegister}>
-        <div>
+        <div className='input-group2'>
           <label>Email</label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
-        <div>
+        <div className='input-group2'>
           <label>Password</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" className="register-button">Register</button>
         <p>
           Already have an account? <Link to="/login">Login</Link>
         </p>
       </form>
+    </div>
     </div>
   );
 };

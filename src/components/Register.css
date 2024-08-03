@@ -1,0 +1,83 @@
+/* src/components/Register.css */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right,#f0f2f5, #33AEFF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .register-box {
+    background: white;
+    padding: 40px 60px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .register-box h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 24px;
+  }
+  
+  .input-group2 {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .input-group2 label {
+    display: block;
+    margin-bottom: 8px;
+    color: #666;
+    font-weight: bold;
+  }
+  
+  .input-group2 input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .input-group2 input:focus {
+    border-color: #33AEFF;
+    outline: none;
+  }
+  
+  .register-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0062E6;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .register-button:hover {
+    background-color: #0052C6;
+  }
+  
+  @media (max-width: 768px) {
+    .register-box {
+      padding: 20px 40px;
+    }
+  }
+  
