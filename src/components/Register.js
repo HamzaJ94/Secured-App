@@ -36,11 +36,11 @@ const Register = () => {
       {error && <p>{error}</p>}
       <form onSubmit={handleRegister}>
         <div className='input-group2'>
-          <label>Email</label>
+          <label for="email">Email:</label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="username"/>
         </div>
         <div className='input-group2'>
-          <label>Password</label>
+          <label for="password">Password:</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="current-password" />
         </div>
         <button type="submit" className="register-button">Register</button>
