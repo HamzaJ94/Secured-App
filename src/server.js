@@ -16,13 +16,13 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "trustedscripts.com"], // Allow scripts from self and trusted sources
-      styleSrc: ["'self'", "trustedstyles.com"],  // Allow styles from self and trusted sources
-      imgSrc: ["'self'", "trustedimages.com"],    // Allow images from self and trusted sources
-      connectSrc: ["'self'", "api.trusted.com"],  // Allow connections to self and trusted APIs
-      fontSrc: ["'self'", "fonts.gstatic.com"],   // Allow fonts from self and Google Fonts
-      objectSrc: ["'none'"],                      // Block <object>, <embed>, or <applet> elements
-      upgradeInsecureRequests: [],                // Forces HTTPS for all resources
+      scriptSrc: ["'self'", "https://cdn.example.com"], // Adjust according to your needs
+      styleSrc: ["'self'", "https://fonts.googleapis.com"], // Example for Google Fonts
+      imgSrc: ["'self'", "https://images.example.com"], // Adjust according to your needs
+      connectSrc: ["'self'", "https://api.example.com"], // Example for API
+      fontSrc: ["'self'", "https://fonts.gstatic.com"], // Google Fonts
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [], // Forces HTTPS for all resources
     },
   })
 );
@@ -32,6 +32,7 @@ app.use(helmet.frameguard({ action: 'deny' })); // Prevent clickjacking
 app.use(helmet.xssFilter()); // Prevent XSS attacks
 app.use(helmet.noSniff()); // Prevent MIME-type sniffing
 app.use(helmet.ieNoOpen()); // Prevent IE from opening untrusted HTML
+app.use(helmet.hidePoweredBy()); // Prevent server from disclosing its technology stack via the ``X-Powered-by` header
 app.use(
   helmet.hsts({     // HTTP Strict Transport Security
     maxAge: 31536000, // One year
@@ -81,7 +82,8 @@ https.createServer(options, app).listen(443, () => {
   console.log('Server running on https://localhost:443');
 });
 
-// Fallback to HTTP server (optional, can be removed if only using HTTPS)
-app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+//Error Handling
+app.use((err, req, res, next) => {
+  console.error(err.stack);   // Logs the error stack trace to the console
+  res.status(500).send('Something broke!');  // Sends a 500 response to the client
 });
