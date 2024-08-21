@@ -35,6 +35,7 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
               required
+              autoComplete="username" 
             />
           </div>
           <div className="input-group">
@@ -46,6 +47,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               required
+              autoComplete="current-password" 
             />
           </div>
           <button type="submit" className="login-button">Login</button>
