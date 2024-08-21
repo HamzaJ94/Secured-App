@@ -37,11 +37,11 @@ const Register = () => {
       <form onSubmit={handleRegister}>
         <div className='input-group2'>
           <label>Email</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="username"/>
         </div>
         <div className='input-group2'>
           <label>Password</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="current-password" />
         </div>
         <button type="submit" className="register-button">Register</button>
         <p>
