@@ -1,7 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
-const fs = require('fs');
-const https = require('https');
+// const fs = require('fs');
+// const https = require('https');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
@@ -72,15 +72,15 @@ app.get('*', (req, res) => {
 });
 
 // HTTPS server configuration
-const options = {
-  key: fs.readFileSync(process.env.SSL_KEY_PATH), // Path to your SSL key
-  cert: fs.readFileSync(process.env.SSL_CERT_PATH) // Path to your SSL certificate
-};
+// const options = {
+//   key: fs.readFileSync(process.env.SSL_KEY_PATH), 
+//   cert: fs.readFileSync(process.env.SSL_CERT_PATH) 
+// };
 
 // Create HTTPS server
-https.createServer(options, app).listen(443, () => {
-  console.log('Server running on https://localhost:443');
-});
+// https.createServer(options, app).listen(443, () => {
+//   console.log('Server running on https://localhost:443');
+// });
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
