@@ -73,8 +73,8 @@ app.get('*', (req, res) => {
 
 // HTTPS server configuration
 const options = {
-  key: fs.readFileSync('path/to/your/key.pem'), // Path to your SSL key
-  cert: fs.readFileSync('path/to/your/cert.pem') // Path to your SSL certificate
+  key: fs.readFileSync(process.env.SSL_KEY_PATH), // Path to your SSL key
+  cert: fs.readFileSync(process.env.SSL_CERT_PATH) // Path to your SSL certificate
 };
 
 // Create HTTPS server
@@ -82,8 +82,17 @@ https.createServer(options, app).listen(443, () => {
   console.log('Server running on https://localhost:443');
 });
 
-//Error Handling
+// Error Handling Middleware
 app.use((err, req, res, next) => {
-  console.error(err.stack);   // Logs the error stack trace to the console
-  res.status(500).send('Something broke!');  // Sends a 500 response to the client
+  console.error(err.stack); // Logs the error stack trace to the console
+  res.status(500).json({
+    status: 'error',
+    message: 'Something went wrong on the server.',
+    error: err.message, // Include error message in response for debugging
+  });
 });
+
+app.use((req, res) => {
+  res.status(404).json({ status: 'error', message: 'Resource not found.' });
+});
+

@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
 import { auth } from '../firebase';
 import * as yup from 'yup';
-import './Register.css'; // Import the CSS file
+import '../../src/styles/Register.css'; // Import the CSS file
 
 const passwordSchema = yup.string().min(8, 'Password must be at least 8 characters')
   .matches(/[A-Z]/, 'Password must contain an uppercase letter')

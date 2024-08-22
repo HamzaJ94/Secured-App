@@ -7,6 +7,8 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-image: url('/Users/HJ/secure-react-app/public/images/The-Significance-of-Web-Application-Security-Testing.jpg');
+    background-position: center; 
   }
   
   .register-container {

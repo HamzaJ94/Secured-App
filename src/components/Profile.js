@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
-import './Profile.css'; // Importing the CSS file for styling
+import '../../src/styles/Profile.css'; // Importing the CSS file for styling
 import { Link } from 'react-router-dom';
 
 const Profile = () => {
@@ -10,6 +10,7 @@ const Profile = () => {
     <div className="profile">
       <header className="profile-header">
         <h1>Profile Page</h1>
+        <br></br>
         <nav>
           <ul>
           <li><Link to="/">Home</Link></li>
@@ -29,7 +30,7 @@ const Profile = () => {
         )}
       </main>
       <footer className="profile-footer">
-        <p>&copy; 2024 Secure React App. All rights reserved.</p>
+        <p>&copy; 2024 Secure React App.</p>
       </footer>
     </div>
   );
