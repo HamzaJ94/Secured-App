@@ -10,7 +10,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     width: 200vh;
-    background-image: url('/Users/HJ/secure-react-app/public/images/depositphotos_33457181-stock-photo-safety-concept-access-granted-on.jpg');
+    /* background-image: url('/Users/HJ/secure-react-app/public/images/depositphotos_33457181-stock-photo-safety-concept-access-granted-on.jpg'); */
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat; 
