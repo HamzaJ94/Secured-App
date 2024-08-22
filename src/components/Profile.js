@@ -23,7 +23,7 @@ const Profile = () => {
             <h2>User Information</h2>
             <p><strong>Email:</strong> {user.email}</p>
             <p><strong>UID:</strong> {user.uid}</p>
-            <button onClick={() => window.location.href = '/'}>Go to Home Page</button>
+            <button onClick={() => window.location.href = '/'}>Logout</button>
           </div>
         ) : (
           <p>No user information available. Please log in.</p>

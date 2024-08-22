@@ -20,7 +20,7 @@ body {
   }
   
   .register-box {
-    background: white;
+    background: rgba(226, 226, 229, 0.882);
     padding: 40px 60px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -30,9 +30,9 @@ body {
   }
   
   .register-box h2 {
-    margin-bottom: 30px;
-    color: #333;
-    font-size: 24px;
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 23px;
   }
   
   .input-group2 {
@@ -48,7 +48,7 @@ body {
   }
   
   .input-group2 input {
-    width: 100%;
+    width: 86%;
     padding: 10px 15px;
     border: 1px solid #ddd;
     border-radius: 5px;

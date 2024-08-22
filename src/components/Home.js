@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="home">
       <header className="home-header">
-        <h1>Welcome to React Secured App</h1>
+        <h1>Welcome to My Security App</h1>
         <br></br>
         <nav>
           <ul>
