@@ -6,6 +6,7 @@ import Register from './components/Register';
 import Profile from './components/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import { AuthProvider } from './contexts/AuthContext';
+import CyberAttackMap from './components/Map';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>}/>
             <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>}/>
+            <Route path="/map" element={<CyberAttackMap />} />
           </Routes>
         </div>
       </Router>

@@ -1,0 +1,53 @@
+  .map {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 184.9vh;
+  }
+  
+  .map-container {
+    margin: 0rem;
+    text-align: center;
+  }
+  
+  .map-container iframe {
+    border: none;
+    border-radius: 3px;
+    height: 741px;
+  }
+  
+  /* Header Styles */
+  .map-header {
+    background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background to make text readable over the image */
+    color: #fff;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+   
+  .map-header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 4.5rem;
+  }
+  
+  .map-header nav ul li {
+    display: inline;
+  }
+  
+  .map-header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .map-header nav ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  
+  
+  

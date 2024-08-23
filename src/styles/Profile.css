@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    width: 200vh;
+    width: 184.8vh;
     background-color: #f4f4f4;
     background-image: url('/public/Application-security-cloud4c-webpage-1.webp');
     background-size: cover;
@@ -50,13 +50,13 @@
   /* Main Content Styles */
   .profile-main {
     flex: 1;
-    padding: 2rem;
+    padding: 0rem;
     text-align: center;
   }
   
   .profile-info {
     background: #eff1f3ef;
-    padding: 2rem;
+    padding: 0.1rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     max-width: 500px;
