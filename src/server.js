@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const fs = require('fs');
@@ -16,11 +17,15 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "https://cdn.example.com"], // Adjust according to your needs
+      scriptSrc: ["'self'", "https://cdn.example.com", "https://apis.google.com"], // Adjust according to your needs
       styleSrc: ["'self'", "https://fonts.googleapis.com"], // Example for Google Fonts
       imgSrc: ["'self'", "https://images.example.com"], // Adjust according to your needs
-      connectSrc: ["'self'", "https://api.example.com"], // Example for API
+      connectSrc: ["'self'", "https://api.example.com", "https://identitytoolkit.googleapis.com" ], // Example for API
       fontSrc: ["'self'", "https://fonts.gstatic.com"], // Google Fonts
+      frameSrc: [
+        "'self'",
+        "https://react-app-9b63e.firebaseapp.com" // Allow this domain to be framed
+      ],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [], // Forces HTTPS for all resources
     },
@@ -64,17 +69,16 @@ app.use(limiter);
 app.use(morgan('combined'));
 
 // Serve static files from the 'build' directory
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '../build')));
 
-// Catch-all route to serve the React app
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
 // HTTPS server configuration
 const options = {
-  key: fs.readFileSync(process.env.SSL_KEY_PATH), 
-  cert: fs.readFileSync(process.env.SSL_CERT_PATH) 
+  key: fs.readFileSync("/Users/HJ/secure-react-app/ssl/server.key"), 
+  cert: fs.readFileSync("/Users/HJ/secure-react-app/ssl/server.cert") 
 };
 
 // Create HTTPS server
