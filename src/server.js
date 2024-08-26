@@ -6,11 +6,13 @@ const https = require('https');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 // Middleware to enhance security by setting various HTTP headers
 app.use(helmet());
+app.use(cookieParser());
 
 // Content Security Policy (CSP) configuration
 app.use(
@@ -20,11 +22,12 @@ app.use(
       scriptSrc: ["'self'", "https://cdn.example.com", "https://apis.google.com"], // Adjust according to your needs
       styleSrc: ["'self'", "https://fonts.googleapis.com"], // Example for Google Fonts
       imgSrc: ["'self'", "https://images.example.com"], // Adjust according to your needs
-      connectSrc: ["'self'", "https://api.example.com", "https://identitytoolkit.googleapis.com" ], // Example for API
+      connectSrc: ["'self'", "https://api.example.com", "https://identitytoolkit.googleapis.com","https://securetoken.googleapis.com",  // Allow Firebase Token Service
+        "https://firebasestorage.googleapis.com" ], // Example for API
       fontSrc: ["'self'", "https://fonts.gstatic.com"], // Google Fonts
       frameSrc: [
         "'self'",
-        "https://react-app-9b63e.firebaseapp.com" // Allow this domain to be framed
+        "https://react-app-9b63e.firebaseapp.com", "https://threatmap.checkpoint.com/" // Allow this domain to be framed
       ],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [], // Forces HTTPS for all resources
@@ -71,9 +74,48 @@ app.use(morgan('combined'));
 // Serve static files from the 'build' directory
 app.use(express.static(path.join(__dirname, '../build')));
 
+// Route to set a secure cookie
+app.get('/set-cookie', (req, res) => {
+  res.cookie('testCookie', 'cookieValue', { httpOnly: true, secure: true, sameSite: 'strict' });
+  res.send('Cookie has been set');
+});
+
+// Route to get the cookie value
+app.get('/get-cookie', (req, res) => {
+  const cookie = req.cookies['testCookie'];
+  res.send(`Cookie value is: ${cookie}`);
+});
+
+app.get('/test', (req, res) => {
+  res.send('Test route is working!');
+});
+
+// Route to test error handling middleware
+app.get('/error-test', (req, res, next) => {
+  const err = new Error('This is a test error!');
+  next(err);
+});
+
+// Catch-all route for serving the React app
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
+
+// Error Handling Middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+      status: 'error',
+      message: 'Something went wrong on the server.',
+      error: err.message,
+  });
+});
+
+// 404 Handling Middleware
+app.use((req, res) => {
+  res.status(404).json({ status: 'error', message: 'Resource not found.' });
+});
+
 
 // HTTPS server configuration
 const options = {
@@ -81,22 +123,7 @@ const options = {
   cert: fs.readFileSync("/Users/HJ/secure-react-app/ssl/server.cert") 
 };
 
-// Create HTTPS server
-https.createServer(options, app).listen(443, () => {
-  console.log('Server running on https://localhost:443');
-});
-
-// Error Handling Middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack); // Logs the error stack trace to the console
-  res.status(500).json({
-    status: 'error',
-    message: 'Something went wrong on the server.',
-    error: err.message, // Include error message in response for debugging
-  });
-});
-
-app.use((req, res) => {
-  res.status(404).json({ status: 'error', message: 'Resource not found.' });
+https.createServer(options, app).listen(8443, () => {
+  console.log('Server running on https://localhost:8443');
 });
 
