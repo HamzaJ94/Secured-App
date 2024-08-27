@@ -1,46 +1,47 @@
-// src/components/MyForm.js
-
-import React, { useState } from 'react';
-import { fetchCsrfToken } from '../utils/csrf'; // Adjust the path as necessary
-import '../../src/styles/MyForm.css'; // Importing the CSS file for styling
+import React, { useState, useEffect } from 'react';
 
 const MyForm = () => {
-  const [formData, setFormData] = useState({ name: '', email: '' });
+  const [csrfToken, setCsrfToken] = useState('');
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  useEffect(() => {
+    // Fetch the CSRF token from the server when the component mounts
+    fetch('/api/csrf-token')
+      .then((response) => response.json())
+      .then((data) => setCsrfToken(data.csrfToken));
+  }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const csrfToken = await fetchCsrfToken(); // Get the CSRF token
 
-    const response = await fetch('/api/submit', {
+    // Prepare form data
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+    };
+
+    // Submit form data with CSRF token
+    fetch('/api/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'CSRF-Token': csrfToken, // Include the CSRF token in the headers
+        'CSRF-Token': csrfToken, // Send the CSRF token
       },
-      credentials: 'include', // Ensure cookies are included in the request
       body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      console.log('Data submitted securely');
-    } else {
-      console.error('Failed to submit data');
-    }
+    })
+      .then((response) => response.text())
+      .then((data) => alert(data))
+      .catch((error) => console.error('Error:', error));
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label>Name:</label>
-        <input type="text" name="name" value={formData.name} onChange={handleChange} />
+        <input type="text" name="name" required />
       </div>
       <div>
         <label>Email:</label>
-        <input type="email" name="email" value={formData.email} onChange={handleChange} />
+        <input type="email" name="email" required />
       </div>
       <button type="submit">Submit</button>
     </form>

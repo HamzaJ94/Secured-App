@@ -79,6 +79,7 @@ app.use(limiter);
 
 // Protected route
 app.post('/api/submit', (req, res) => {
+  console.log('CSRF Token:', req.headers['csrf-token']);
   res.send('Data received securely');
 });
 

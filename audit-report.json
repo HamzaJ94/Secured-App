@@ -1,0 +1,419 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@svgr/plugin-svgo": {
+      "name": "@svgr/plugin-svgo",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "svgo"
+      ],
+      "effects": [
+        "@svgr/webpack"
+      ],
+      "range": "<=5.5.0",
+      "nodes": [
+        "node_modules/@svgr/plugin-svgo"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "3.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    "@svgr/webpack": {
+      "name": "@svgr/webpack",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "@svgr/plugin-svgo"
+      ],
+      "effects": [
+        "react-scripts"
+      ],
+      "range": "4.0.0 - 5.5.0",
+      "nodes": [
+        "node_modules/@svgr/webpack"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "3.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    "@vercel/fun": {
+      "name": "@vercel/fun",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "debug",
+        "semver",
+        "tar"
+      ],
+      "effects": [
+        "vercel"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@vercel/fun"
+      ],
+      "fixAvailable": true
+    },
+    "@vercel/node": {
+      "name": "@vercel/node",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "undici"
+      ],
+      "effects": [
+        "vercel"
+      ],
+      "range": "2.14.0 || 3.0.2 - 3.1.7",
+      "nodes": [
+        "node_modules/@vercel/node"
+      ],
+      "fixAvailable": true
+    },
+    "css-select": {
+      "name": "css-select",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "nth-check"
+      ],
+      "effects": [
+        "svgo"
+      ],
+      "range": "<=3.1.0",
+      "nodes": [
+        "node_modules/svgo/node_modules/css-select"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "3.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    "debug": {
+      "name": "debug",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1096792,
+          "name": "debug",
+          "dependency": "debug",
+          "title": "Regular Expression Denial of Service in debug",
+          "url": "https://github.com/advisories/GHSA-gxpj-cx7g-858c",
+          "severity": "low",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 3.7,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": ">=4.0.0 <4.3.1"
+        }
+      ],
+      "effects": [
+        "@vercel/fun"
+      ],
+      "range": "4.0.0 - 4.3.0",
+      "nodes": [
+        "node_modules/@vercel/fun/node_modules/debug"
+      ],
+      "fixAvailable": true
+    },
+    "nth-check": {
+      "name": "nth-check",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1095141,
+          "name": "nth-check",
+          "dependency": "nth-check",
+          "title": "Inefficient Regular Expression Complexity in nth-check",
+          "url": "https://github.com/advisories/GHSA-rp65-9cf3-cjxr",
+          "severity": "high",
+          "cwe": [
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<2.0.1"
+        }
+      ],
+      "effects": [
+        "css-select"
+      ],
+      "range": "<2.0.1",
+      "nodes": [
+        "node_modules/svgo/node_modules/nth-check"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "3.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    "postcss": {
+      "name": "postcss",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1094544,
+          "name": "postcss",
+          "dependency": "postcss",
+          "title": "PostCSS line return parsing error",
+          "url": "https://github.com/advisories/GHSA-7fh5-64p2-3v2j",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-74",
+            "CWE-144"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": "<8.4.31"
+        }
+      ],
+      "effects": [
+        "resolve-url-loader"
+      ],
+      "range": "<8.4.31",
+      "nodes": [
+        "node_modules/resolve-url-loader/node_modules/postcss"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "3.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    "react-scripts": {
+      "name": "react-scripts",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@svgr/webpack",
+        "resolve-url-loader"
+      ],
+      "effects": [],
+      "range": ">=2.1.4",
+      "nodes": [
+        "node_modules/react-scripts"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "3.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    "resolve-url-loader": {
+      "name": "resolve-url-loader",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "postcss"
+      ],
+      "effects": [
+        "react-scripts"
+      ],
+      "range": "0.0.1-experiment-postcss || 3.0.0-alpha.1 - 4.0.0",
+      "nodes": [
+        "node_modules/resolve-url-loader"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "3.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    "semver": {
+      "name": "semver",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1098562,
+          "name": "semver",
+          "dependency": "semver",
+          "title": "semver vulnerable to Regular Expression Denial of Service",
+          "url": "https://github.com/advisories/GHSA-c2qf-rxjj-qqgw",
+          "severity": "high",
+          "cwe": [
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=7.0.0 <7.5.2"
+        }
+      ],
+      "effects": [
+        "@vercel/fun"
+      ],
+      "range": "7.0.0 - 7.5.1",
+      "nodes": [
+        "node_modules/semver"
+      ],
+      "fixAvailable": true
+    },
+    "svgo": {
+      "name": "svgo",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "css-select"
+      ],
+      "effects": [
+        "@svgr/plugin-svgo"
+      ],
+      "range": "1.0.0 - 1.3.2",
+      "nodes": [
+        "node_modules/svgo"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "3.0.1",
+        "isSemVerMajor": true
+      }
+    },
+    "tar": {
+      "name": "tar",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1097493,
+          "name": "tar",
+          "dependency": "tar",
+          "title": "Denial of service while parsing a tar file due to lack of folders count validation",
+          "url": "https://github.com/advisories/GHSA-f5x3-32g6-xq36",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 6.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+          },
+          "range": "<6.2.1"
+        }
+      ],
+      "effects": [
+        "@vercel/fun"
+      ],
+      "range": "<6.2.1",
+      "nodes": [
+        "node_modules/tar"
+      ],
+      "fixAvailable": true
+    },
+    "undici": {
+      "name": "undici",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1097109,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "Undici's Proxy-Authorization header not cleared on cross-origin redirect for dispatch, request, stream, pipeline",
+          "url": "https://github.com/advisories/GHSA-m4v8-wqvr-p9f7",
+          "severity": "low",
+          "cwe": [
+            "CWE-200",
+            "CWE-285"
+          ],
+          "cvss": {
+            "score": 3.9,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:U/C:L/I:L/A:L"
+          },
+          "range": "<5.28.4"
+        },
+        {
+          "source": 1097200,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "Undici's fetch with integrity option is too lax when algorithm is specified but hash value is in incorrect",
+          "url": "https://github.com/advisories/GHSA-9qxr-qj54-h672",
+          "severity": "low",
+          "cwe": [
+            "CWE-284"
+          ],
+          "cvss": {
+            "score": 2.6,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:N/I:L/A:N"
+          },
+          "range": "<5.28.4"
+        },
+        {
+          "source": 1097221,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "Undici proxy-authorization header not cleared on cross-origin redirect in fetch",
+          "url": "https://github.com/advisories/GHSA-3787-6prv-h9w3",
+          "severity": "low",
+          "cwe": [
+            "CWE-200"
+          ],
+          "cvss": {
+            "score": 3.9,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:U/C:L/I:L/A:L"
+          },
+          "range": "<=5.28.2"
+        }
+      ],
+      "effects": [
+        "@vercel/node"
+      ],
+      "range": "<=5.28.3",
+      "nodes": [
+        "node_modules/@vercel/node/node_modules/undici"
+      ],
+      "fixAvailable": true
+    },
+    "vercel": {
+      "name": "vercel",
+      "severity": "low",
+      "isDirect": true,
+      "via": [
+        "@vercel/fun",
+        "@vercel/node"
+      ],
+      "effects": [],
+      "range": "28.12.3 || 29.0.1 - 29.0.3 || >=32.0.2",
+      "nodes": [
+        "node_modules/vercel"
+      ],
+      "fixAvailable": true
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 4,
+      "moderate": 3,
+      "high": 8,
+      "critical": 0,
+      "total": 15
+    },
+    "dependencies": {
+      "prod": 1784,
+      "dev": 0,
+      "optional": 28,
+      "peer": 2,
+      "peerOptional": 0,
+      "total": 1813
+    }
+  }
+}
