@@ -7,6 +7,7 @@ import Profile from './components/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import { AuthProvider } from './contexts/AuthContext';
 import CyberAttackMap from './components/Map';
+import MyForm from './components/MyForm';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>}/>
             <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>}/>
             <Route path="/map" element={<CyberAttackMap />} />
+            <Route path="/form" element={<MyForm />} />
           </Routes>
         </div>
       </Router>

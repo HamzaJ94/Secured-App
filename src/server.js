@@ -7,12 +7,21 @@ const path = require('path');
 const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
+const csurf = require('csurf');
 
 const app = express();
 
 // Middleware to enhance security by setting various HTTP headers
 app.use(helmet());
 app.use(cookieParser());
+
+// Initialize CSRF protection
+app.use(csurf({ cookie: { httpOnly: true, secure: true, sameSite: 'Strict' } }));
+
+// Serve the CSRF token to the client
+app.get('/api/csrf-token', (req, res) => {
+  res.json({ csrfToken: req.csrfToken() });
+});
 
 // Content Security Policy (CSP) configuration
 app.use(
@@ -67,6 +76,11 @@ const limiter = rateLimit({
   message: 'Too many requests from this IP, please try again later.'
 });
 app.use(limiter);
+
+// Protected route
+app.post('/api/submit', (req, res) => {
+  res.send('Data received securely');
+});
 
 // HTTP request logging for debugging and monitoring
 app.use(morgan('combined'));

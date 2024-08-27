@@ -13,6 +13,7 @@ const Home = () => {
             <li><Link to="/profile">Profile</Link></li>
             <li><a href="/map">Live Cyber Threat Map</a></li>
             <li><a href="/register">Register</a></li>
+            <li><a href="/form">Form</a></li>
           </ul>
         </nav>
       </header>
