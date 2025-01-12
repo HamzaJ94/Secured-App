@@ -4,11 +4,11 @@
 
 ## Sections
 
-✔️ Landing page (Login)
-✔️ Register
-✔️ Home
-✔️ Profile
-✔️ Live Cyber Threat Map
+✔️ Landing page (Login)\
+✔️ Register\
+✔️ Home\
+✔️ Profile\
+✔️ Live Cyber Threat Map\
 ✔️ Form (XSS & CSRF prtoected)
 
 ## Technologies Used
